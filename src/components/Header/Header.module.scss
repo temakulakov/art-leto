@@ -1,3 +1,35 @@
 .root {
+  height: 60px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  gap: 20px;
+  li {
+
+  }
+}
+
+.telephone {
+  display: flex;
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.col {
 
 }
