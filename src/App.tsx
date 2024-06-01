@@ -8,6 +8,7 @@ import Slider from "./components/Slider/Slider";
 import Grid from "./components/Grid/Grid";
 import Line from "./components/Line/Line";
 import dayjs from 'dayjs';
+import {IEvent} from "./types";
 
 interface Month {
     id: number;
@@ -34,11 +35,27 @@ const App: React.FC = () => {
         sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
     };
 
+    const getSortedEvents = (events: IEvent[], month: number) => {
+        return events
+            .filter(event => dayjs(event.dateTime).month() === month)
+            .sort((a, b) => dayjs(a.dateTime).isBefore(b.dateTime) ? -1 : 1);
+    };
+
+    console.log(data);
+
     return (
         <div className={styles.root}>
             <Header scrollToSection={scrollToSection} />
             <Slider />
-            {isLoading && <h2>Загрузка</h2>}
+            {isLoading && <>
+                <Line color={monthsJSX[0].color} word={monthsJSX[0].title} />
+                <Grid events={[
+                    {id: 0, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: '"Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!"', imageLink: '', dateTime: dayjs()},
+                    {id: 1, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: '"Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!"', imageLink: '', dateTime: dayjs()},
+                    {id: 2, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: '"Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!"', imageLink: '', dateTime: dayjs()},
+                    {id: 3, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: '"Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!"', imageLink: '', dateTime: dayjs()},
+                ]} />
+            </>}
             {isError && <h2>Ошибка загрузки</h2>}
             {!isLoading && !isError && monthsJSX.map((month, index) => (
                 <div
@@ -48,9 +65,9 @@ const App: React.FC = () => {
                 >
                     <Line color={month.color} word={month.title} />
                     {data ? (
-                        <Grid events={data.filter(event => dayjs(event.dateTime).month() === month.count - 1)} />
+                        <Grid events={getSortedEvents(data, month.count - 1)} />
                     ) : (
-                        <h2>Загрузка</h2>
+                        <Line color={monthsJSX[0].color} word={monthsJSX[0].title} />
                     )}
                 </div>
             ))}

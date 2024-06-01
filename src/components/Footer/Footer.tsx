@@ -12,9 +12,9 @@ import React from "react";
 const Footer = () => {
     return <div className={styles.root}>
         <div className={styles.top}>
-            <img src={logo} alt={logo} className={styles.logo}/>
+            <a href={'https://gctm.ru'}><img src={logo} alt={logo} className={styles.logo}/></a>
             <div className={styles.contacts}>
-                <div className={styles.first}>
+            <div className={styles.first}>
                     <img src={search} alt={search}/>
                     <a href={'https://yandex.ru/maps/-/CDf0UVP6'}>Дом-музей М.С. Щепкина
                         Москва, ул. Щепкина, д. 47, стр. 2

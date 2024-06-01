@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Grid.module.scss';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
@@ -23,12 +23,35 @@ interface GridProps {
 }
 
 const Grid = ({ events }: GridProps) => {
+    const [imageLoaded, setImageLoaded] = useState<boolean[]>(new Array(events.length).fill(false));
+
+    const handleImageLoad = (index: number) => {
+        const newImageLoaded = [...imageLoaded];
+        newImageLoaded[index] = true;
+        setImageLoaded(newImageLoaded);
+    };
+
+    const handleImageError = (index: number) => {
+        const newImageLoaded = [...imageLoaded];
+        newImageLoaded[index] = true;
+        setImageLoaded(newImageLoaded);
+    };
+
     return (
         <div className={styles.root}>
             {events.map((event, index) => (
                 <a href={event.eventLink} className={styles.event} key={index}>
                     <div>
-                        <img src={event.imageLink} alt={event.title} className={styles.image}/>
+                        <div className={styles.imageContainer}>
+                            {!imageLoaded[index] && <div className={styles.skeleton}></div>}
+                            <img
+                                src={event.imageLink}
+                                alt={event.title}
+                                className={`${styles.image} ${imageLoaded[index] ? styles.visible : styles.hidden}`}
+                                onLoad={() => handleImageLoad(index)}
+                                onError={() => handleImageError(index)}
+                            />
+                        </div>
                         <div className={styles.panel}>
                             <div className={styles.dateTime}>
                                 <span>{dayjs(event.dateTime).locale('ru').format('DD MMMM')}</span>

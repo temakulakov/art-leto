@@ -5,7 +5,7 @@ import Logo from "./Logo/Logo";
 
 const Slider = () => {
     return <div className={styles.root}>
-        <Logo/>
+        <a href={'https://gctm.ru'}><Logo/></a>
         <p className={styles.text}>
             Проведи свое лето с пользой!<br/>
             <span style={{ color: '#A41930'}}>Арт-Лето в Бахрушинском музее</span> — программа <br/> мастер-классов для детей
