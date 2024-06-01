@@ -19,11 +19,11 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 5px;
   height: 550px;
-  height: fit-content !important;
+  //height: fit-content !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: fit-content ;
+  //min-height: fit-content ;
   p {
     margin: 0;
   }
@@ -34,6 +34,11 @@
   color: #A41930;
   font-family: 'TT-Nooks-Script-Regular';
   text-transform: uppercase;
+
+  height: 45px;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .imageContainer {
