@@ -42,7 +42,7 @@ const Grid = ({ events }: GridProps) => {
                             </div>
                         </div>
                         <div className={styles.content}>
-                            <p>{event.type}</p>
+                            <p className={styles.type}>{event.type}</p>
                             <p className={styles.title}>{event.title}</p>
                             <p className={styles.description}>{event.description}</p>
                         </div>

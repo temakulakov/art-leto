@@ -11,3 +11,36 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'TT-Norms-Pro-Compact-Regular';
+  src: url('static/fonts/TT-Norms-Pro-Compact-Regular.woff') format('woff'),
+  url('static/fonts/TT-Norms-Pro-Compact-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT-Nooks-Script-Regular';
+  src: url('static/fonts/TT-Nooks-Script-Regular.woff') format('woff'),
+  url('static/fonts/TT-Nooks-Script-Regular.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+
+/* You can now use these fonts in your styles */
+
+body {
+  font-family: 'TT-Norms-Pro-Compact-Regular', sans-serif;
+}
+
+/* Example usage for TT Nooks Script */
+h1, h2, h3 {
+  font-family: 'TT-Nooks-Script-Regular', cursive;
+}
+
+
+* {
+  /*overflow-x: hidden;*/
+}

@@ -15,27 +15,31 @@ const LineContainer = styled.div<{ color: string }>`
     white-space: nowrap;
     border-bottom: 2px solid ${props => props.color};
     background-color: ${props => props.color};
-    height: 40px;
+    height: 32px;
     display: flex;
     align-items: center;
     position: absolute;
     left: 0;
     cursor: default;
     user-select: none;
+    font-family: 'TT-Nooks-Script-Regular';
+    text-transform: uppercase;
 `;
 
 const ScrollingWordsWrapper = styled.div`
     display: flex;
     width: 100%;
-    
 `;
 
 const ScrollingWord = styled(motion.div)`
     display: inline-block;
-    font-size: 24px;
     font-weight: bold;
     color: #fff;
     margin-right: 10%; /* Увеличенное расстояние между словами */
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 const Line: React.FC<LineProps> = ({ color, word }) => {

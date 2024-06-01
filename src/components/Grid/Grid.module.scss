@@ -27,6 +27,8 @@
 
 .title {
   color: #A41930;
+  font-family: 'TT-Nooks-Script-Regular';
+  text-transform: uppercase;
 }
 
 .image {
@@ -96,4 +98,11 @@
   -webkit-line-clamp: 3; /* ограничение по количеству строк */
   -webkit-box-orient: vertical;
   white-space: normal;
+}
+
+
+.type {
+  color: #454545;
+  font-family: 'TT-Nooks-Script-Regular';
+  text-transform: uppercase;
 }
