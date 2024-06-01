@@ -15,15 +15,19 @@ const LineContainer = styled.div<{ color: string }>`
     white-space: nowrap;
     border-bottom: 2px solid ${props => props.color};
     background-color: ${props => props.color};
-    position: relative;
     height: 40px;
     display: flex;
     align-items: center;
+    position: absolute;
+    left: 0;
+    cursor: default;
+    user-select: none;
 `;
 
 const ScrollingWordsWrapper = styled.div`
     display: flex;
     width: 100%;
+    
 `;
 
 const ScrollingWord = styled(motion.div)`

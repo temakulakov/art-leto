@@ -9,6 +9,8 @@ export interface IEvent {
     duration: number;
     rating: number;
     imageLink: string;
+    type: string;
+    description: string;
 }
 
 
@@ -26,4 +28,7 @@ export interface IApiEvent {
     PROPERTY_329: string;
     PROPERTY_330: string;
     PROPERTY_332: string;
+    PROPERTY_333: string;
+    PROPERTY_334: string;
+
 }

@@ -9,8 +9,10 @@
 }
 
 .logo {
-
+  width: 260px;
+  height: auto;
 }
+
 
 .menu {
   display: flex;
@@ -18,12 +20,34 @@
   padding: 0;
   gap: 20px;
   li {
+    border-radius: 8px;
+    height: 30px;
+    width: 80px;
+    color: white;
+    cursor: pointer;
+    transition: all .38s ease-in-out;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  a {
+    cursor: pointer;
   }
 }
 
 .telephone {
   display: flex;
+
+  img {
+    margin-right: 20px;
+  }
+
+  svg {
+    margin-right: 20px;
+  }
+
   div {
     display: flex;
     flex-direction: column;
@@ -31,5 +55,9 @@
 }
 
 .col {
-
+  a {
+    cursor: pointer;
+    color: #828282;
+    text-decoration: none;
+  }
 }
