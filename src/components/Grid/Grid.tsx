@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import styles from './Grid.module.scss';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import updateLocale from 'dayjs/plugin/updateLocale';
 import { IEvent } from '../../types';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import 'react-lazy-load-image-component/src/effects/black-and-white.css';
+import 'react-lazy-load-image-component/src/effects/opacity.css';
 
 // Устанавливаем плагины
 dayjs.extend(advancedFormat);
@@ -23,19 +27,10 @@ interface GridProps {
 }
 
 const Grid = ({ events }: GridProps) => {
-    const [imageLoaded, setImageLoaded] = useState<boolean[]>(new Array(events.length).fill(false));
-
-    const handleImageLoad = (index: number) => {
-        const newImageLoaded = [...imageLoaded];
-        newImageLoaded[index] = true;
-        setImageLoaded(newImageLoaded);
-    };
-
-    const handleImageError = (index: number) => {
-        const newImageLoaded = [...imageLoaded];
-        newImageLoaded[index] = true;
-        setImageLoaded(newImageLoaded);
-    };
+    // const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    //     console.error('Image failed to load:', e.currentTarget.src);
+    //     e.currentTarget.src = '/path/to/default/image.jpg'; // Путь к изображению-заглушке
+    // };
 
     return (
         <div className={styles.root}>
@@ -43,13 +38,11 @@ const Grid = ({ events }: GridProps) => {
                 <a href={event.eventLink} className={styles.event} key={index}>
                     <div>
                         <div className={styles.imageContainer}>
-                            {!imageLoaded[index] && <div className={styles.skeleton}></div>}
-                            <img
+                            <LazyLoadImage
                                 src={event.imageLink}
                                 alt={event.title}
-                                className={`${styles.image} ${imageLoaded[index] ? styles.visible : styles.hidden}`}
-                                onLoad={() => handleImageLoad(index)}
-                                onError={() => handleImageError(index)}
+                                // effect='blur'
+                                className={styles.image}
                             />
                         </div>
                         <div className={styles.panel}>
