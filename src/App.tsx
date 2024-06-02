@@ -11,6 +11,11 @@ import dayjs from 'dayjs';
 import { IEvent } from "./types";
 import { isMobile } from 'react-device-detect';
 
+import logo from './static/images/BTM.svg'
+import logo2 from './static/logo/logo.png'
+
+const months = ['Июнь', 'Июль', 'Август'];
+
 interface Month {
     id: number;
     title: string;
@@ -31,9 +36,14 @@ const App: React.FC = () => {
     });
 
     const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const headingRefs = useRef<(HTMLHeadingElement | null)[]>([]);
 
     const scrollToSection = (index: number) => {
-        sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
+        if (isMobile && headingRefs.current[index]) {
+            headingRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     const getSortedEvents = (events: IEvent[], month: number) => {
@@ -47,7 +57,26 @@ const App: React.FC = () => {
     return (
         <div className={styles.root}>
             {
-                isMobile ? <></> : <>
+                isMobile ? <div className={styles.mobile}>
+                    <div className={styles.mobileRoot}>
+                        <div className={styles.mobileTop}>
+                            <a href={'https://gctm.ru'}><img src={logo} alt="Логотип" /></a>
+                            <p className={styles.text}>
+                                Проведи свое лето с пользой!<br />
+                                <span style={{ color: '#A41930' }}>Арт-Лето в Бахрушинском музее</span> —
+                                программа <br /> мастер-классов для детей
+                            </p>
+                        </div>
+                        <a href={'https://gctm.ru'}><img src={logo2} alt="Логотип 2" /></a>
+                    </div>
+                    <div className={styles.mobilePanel}>
+                        {
+                            months.map((el, index) => <button key={index} onClick={() => scrollToSection(index)}>
+                                {el}
+                            </button>)
+                        }
+                    </div>
+                </div> : <>
                     <Header scrollToSection={scrollToSection} />
                     <Slider />
                 </>
@@ -55,10 +84,10 @@ const App: React.FC = () => {
             {isLoading && <>
                 {!isMobile ? <Line color={monthsJSX[0].color} word={monthsJSX[0].title} /> : <h3>{monthsJSX[0].title}</h3>}
                 <Grid events={[
-                    {id: 0, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: 'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!', imageLink: '', dateTime: dayjs()},
-                    {id: 1, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: 'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!', imageLink: '', dateTime: dayjs()},
-                    {id: 2, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: 'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!', imageLink: '', dateTime: dayjs()},
-                    {id: 3, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: 'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!', imageLink: '', dateTime: dayjs()},
+                    { id: 0, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: 'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!', imageLink: '', dateTime: dayjs() },
+                    { id: 1, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: 'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!', imageLink: '', dateTime: dayjs() },
+                    { id: 2, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: 'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!', imageLink: '', dateTime: dayjs() },
+                    { id: 3, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: 'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!', imageLink: '', dateTime: dayjs() },
                 ]} />
             </>}
             {!isLoading && !isError && monthsJSX.map((month, index) => (
@@ -67,7 +96,7 @@ const App: React.FC = () => {
                     ref={el => sectionRefs.current[index] = el}
                     style={{ height: "fit-content", minHeight: "100px" }}
                 >
-                    {!isMobile ? <Line color={month.color} word={month.title} /> : <h3>{month.title}</h3>}
+                    {!isMobile ? <Line color={month.color} word={month.title} /> : <h3 ref={el => headingRefs.current[index] = el}>{month.title}</h3>}
                     {data ? (
                         <Grid events={getSortedEvents(data, month.count - 1)} />
                     ) : (

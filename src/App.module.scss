@@ -11,3 +11,58 @@
     width: 100%;
   }
 }
+
+.mobile {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileRoot {
+  display: flex;
+  position: relative;
+  padding: 5vw;
+  padding-top: 10vw;
+  > a img {
+    position: absolute;
+    width: 40vw;
+    height: auto;
+    right: 0;
+    z-index: -1;
+  }
+}
+
+.mobileTop {
+  display: flex;
+  flex-direction: column;
+  img {
+    width: 50vw;
+  }
+  p {
+    font-size: 4vw;
+    z-index: 100;
+    width: 70%;
+  }
+}
+
+.mobilePanel {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 4vw;
+  button {
+    border: none;
+    background-color: #F6F6F6;
+    padding: 3vw 6vw;
+    border-radius: 40px;
+
+    text-transform: uppercase;
+    font-family: 'TT-Nooks-Script-Regular';
+
+    transition: .35s ease-in-out;
+
+    &:active {
+      background-color: #F8B500;
+      color: black;
+    }
+  }
+}
