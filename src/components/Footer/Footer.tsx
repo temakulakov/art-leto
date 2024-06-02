@@ -18,13 +18,15 @@ interface HeaderProps {
 
 const Footer = ({ scrollToSection }: HeaderProps) => {
     return <div className={styles.root}>
-        <div className={styles.mobilePanel}>
-            {
-                months.map((el, index) => <button key={index} onClick={() => scrollToSection(index)}>
-                    {el}
-                </button>)
-            }
-        </div>
+        {
+            isMobile && <div className={styles.mobilePanel}>
+                {
+                    months.map((el, index) => <button key={index} onClick={() => scrollToSection(index)}>
+                        {el}
+                    </button>)
+                }
+            </div>
+        }
         <div className={styles.top}>
             {
                 isMobile ? <div className={styles.mobileMMM}>

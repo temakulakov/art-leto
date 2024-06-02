@@ -65,8 +65,10 @@
   display: flex;
   align-items: center;
   height: 40px;
-  padding: 0 8px;
+  padding: 0 1vw;
   border-radius: 10px;
+
+
   &:first-child {
     padding: 0 8px 0 5px;
   }
@@ -151,6 +153,4 @@
     padding: 0 5%;
     height: 34px;
   }
-
-
 }
