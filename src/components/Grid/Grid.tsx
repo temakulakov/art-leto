@@ -6,9 +6,8 @@ import 'dayjs/locale/ru';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import updateLocale from 'dayjs/plugin/updateLocale';
 import { IEvent } from '../../types';
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import 'react-lazy-load-image-component/src/effects/black-and-white.css';
-import 'react-lazy-load-image-component/src/effects/opacity.css';
+import { isMobile } from 'react-device-detect';
+
 
 // Устанавливаем плагины
 dayjs.extend(advancedFormat);
@@ -27,11 +26,6 @@ interface GridProps {
 }
 
 const Grid = ({ events }: GridProps) => {
-    // const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    //     console.error('Image failed to load:', e.currentTarget.src);
-    //     e.currentTarget.src = '/path/to/default/image.jpg'; // Путь к изображению-заглушке
-    // };
-
     return (
         <div className={styles.root}>
             {events.map((event, index) => (
@@ -46,16 +40,31 @@ const Grid = ({ events }: GridProps) => {
                             />
                         </div>
                         <div className={styles.panel}>
-                            <div className={styles.dateTime}>
-                                <span>{dayjs(event.dateTime).locale('ru').format('DD MMMM')}</span>
-                                <p>{dayjs(event.dateTime).locale('ru').format('HH:mm')}</p>
-                            </div>
-                            <div className={styles.dateTime}>
-                                <p>{event.duration} мин.</p>
-                            </div>
-                            <div className={styles.dateTime}>
-                                {event.rating} +
-                            </div>
+                            {
+                                isMobile ? <>
+                                    <div className={styles.dateTime}>
+                                        {dayjs(event.dateTime).locale('ru').format('DD MMMM')}
+                                    </div>
+                                    <div className={styles.dateTime}>
+                                        {dayjs(event.dateTime).locale('ru').format('HH:mm')}
+                                    </div>
+                                    <div className={styles.dateTime}>
+                                        {event.duration} мин.
+                                    </div>
+                                </> : <>
+                                    <div className={styles.dateTime}>
+                                        <span>{dayjs(event.dateTime).locale('ru').format('DD MMMM')}</span>
+                                        <p>{dayjs(event.dateTime).locale('ru').format('HH:mm')}</p>
+                                    </div>
+                                    <div className={styles.dateTime}>
+                                        <p>{event.duration} мин.</p>
+                                    </div>
+                                    <div className={styles.dateTime}>
+                                        {event.rating} +
+                                    </div>
+                                </>
+                            }
+
                         </div>
                         <div className={styles.content}>
                             <p className={styles.type}>{event.type}</p>

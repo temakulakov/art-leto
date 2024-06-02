@@ -30,8 +30,6 @@ const App: React.FC = () => {
         queryFn: getList
     });
 
-    console.log(isMobile)
-
     const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     const scrollToSection = (index: number) => {
@@ -48,10 +46,14 @@ const App: React.FC = () => {
 
     return (
         <div className={styles.root}>
-            <Header scrollToSection={scrollToSection} />
-            <Slider />
+            {
+                isMobile ? <></> : <>
+                    <Header scrollToSection={scrollToSection} />
+                    <Slider />
+                </>
+            }
             {isLoading && <>
-                <Line color={monthsJSX[0].color} word={monthsJSX[0].title} />
+                {!isMobile ? <Line color={monthsJSX[0].color} word={monthsJSX[0].title} /> : <h3>{monthsJSX[0].title}</h3>}
                 <Grid events={[
                     {id: 0, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: 'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!', imageLink: '', dateTime: dayjs()},
                     {id: 1, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: 'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!', imageLink: '', dateTime: dayjs()},
@@ -59,14 +61,13 @@ const App: React.FC = () => {
                     {id: 3, title: 'Мастер-класс «Узоры Гончаровой и лабиринты»', duration: 60, eventLink: '', ticketLink: '', rating: 6, type: 'Мастер класс', description: 'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!', imageLink: '', dateTime: dayjs()},
                 ]} />
             </>}
-            {isError && <h2>Ошибка загрузки</h2>}
             {!isLoading && !isError && monthsJSX.map((month, index) => (
                 <div
                     key={month.id}
                     ref={el => sectionRefs.current[index] = el}
                     style={{ height: "fit-content", minHeight: "100px" }}
                 >
-                    <Line color={month.color} word={month.title} />
+                    {!isMobile ? <Line color={month.color} word={month.title} /> : <h3>{month.title}</h3>}
                     {data ? (
                         <Grid events={getSortedEvents(data, month.count - 1)} />
                     ) : (
@@ -75,7 +76,6 @@ const App: React.FC = () => {
                 </div>
             ))}
             <Footer />
-            {isMobile && <div className={styles.mobileMessage}>Вы используете мобильное устройство</div>}
         </div>
     );
 };

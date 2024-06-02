@@ -127,3 +127,30 @@
   font-family: 'TT-Nooks-Script-Regular';
   text-transform: uppercase;
 }
+
+@media (max-width: 600px) {
+  .event {
+    flex: 1 1 calc(50% - 15px); /* На мобильных устройствах элементы будут занимать половину ширины */
+    max-width: calc(50% - 15px); /* На мобильных устройствах элементы будут занимать половину ширины */
+    box-shadow: none;
+    height: 400px !important;
+    margin: 0 !important;
+  }
+
+  .panel {
+    gap: 2%;
+  }
+
+  .dateTime {
+    font-size: 11px;
+    height: 30px;
+  }
+
+  .btn {
+    width: fit-content;
+    padding: 0 5%;
+    height: 34px;
+  }
+
+
+}

@@ -88,3 +88,103 @@
     text-decoration: none;
   }
 }
+
+
+@media (max-width: 600px) {
+  .logo {
+    width: 14vw;
+    height: auto;
+  }
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .contacts {
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+    a {
+      width: 10vw;
+      font-size: calc(1vw);
+      display: flex;
+    }
+  }
+
+  .first {
+    display: flex;
+    img {
+      width: 5vw;
+      height: auto;
+      margin-right: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: #828282;
+    }
+  }
+
+  .menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 1px;
+
+    li {
+      border-radius: 8px;
+      height: 30px;
+      width: 80px;
+      color: white;
+      cursor: pointer;
+      transition: all .38s ease-in-out;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    a {
+      cursor: pointer;
+      img {
+        width: 5vw;
+      }
+    }
+  }
+
+  .telephone {
+    display: flex;
+
+    img {
+      margin-right: 20px;
+    }
+
+    svg {
+      margin-right: 20px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .col {
+    a {
+      cursor: pointer;
+      color: #828282;
+      text-decoration: none;
+    }
+  }
+}
