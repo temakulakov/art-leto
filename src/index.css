@@ -44,3 +44,11 @@ h1, h2, h3 {
 * {
   /*overflow-x: hidden;*/
 }
+
+h3 {
+  font-size: 9vw;
+  margin: 0;
+  text-transform: uppercase;
+  color: #454545;
+  font-weight: 900;
+}
