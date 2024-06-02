@@ -8,23 +8,50 @@ import rt from "../../static/icons/rt.svg";
 import phone from "../../static/icons/phone.svg";
 import search from "../../static/icons/search.svg";
 import React from "react";
+import { isMobile } from 'react-device-detect';
+
 
 const Footer = () => {
     return <div className={styles.root}>
         <div className={styles.top}>
             <a href={'https://gctm.ru'}><img src={logo} alt={logo} className={styles.logo}/></a>
-            <div className={styles.contacts}>
-            <div className={styles.first}>
+            {
+                isMobile ? <div className={styles.contacts}>
                     <img src={search} alt={search}/>
-                    <a href={'https://yandex.ru/maps/-/CDf0UVP6'}>Дом-музей М.С. Щепкина
-                        Москва, ул. Щепкина, д. 47, стр. 2
+                    <div>
+                        <a href={'https://yandex.ru/maps/-/CDf0UVP6'}>Дом-музей М.С. Щепкина
+                            Москва, ул. Щепкина, д. 47, стр. 2
+                        </a>
+                        <a href={'https://yandex.ru/maps/-/CDf0U6mn'} style={{
+                            position: 'absolute',
+                            marginTop: '50px',
+                            right: 0,
+                            color: '#828282',
+                            textDecoration: 'none'
+                        }}>
+                            Дом-музей М.Н. Ермоловой
+                            Москва, Тверской бульвар, д. 11
+                        </a>
+                    </div>
+                </div> : <div className={styles.contacts}>
+                    <div className={styles.first}>
+                        <img src={search} alt={search}/>
+                        <a href={'https://yandex.ru/maps/-/CDf0UVP6'}>Дом-музей М.С. Щепкина
+                            Москва, ул. Щепкина, д. 47, стр. 2
+                        </a>
+                    </div>
+                    <a href={'https://yandex.ru/maps/-/CDf0U6mn'} style={{
+                        position: 'absolute',
+                        marginTop: '50px',
+                        right: 0,
+                        color: '#828282',
+                        textDecoration: 'none'
+                    }}>
+                        Дом-музей М.Н. Ермоловой
+                        Москва, Тверской бульвар, д. 11
                     </a>
                 </div>
-                <a href={'https://yandex.ru/maps/-/CDf0U6mn'} style={{ position: 'absolute', marginTop: '50px', right: 0, color: '#828282', textDecoration: 'none' }}>
-                    Дом-музей М.Н. Ермоловой
-                    Москва, Тверской бульвар, д. 11
-                </a>
-            </div>
+            }
             <div className={styles.telephone}>
                 <img src={phone} alt="Phone"/>
                 <div className={styles.col}>
