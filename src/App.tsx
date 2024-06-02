@@ -104,7 +104,7 @@ const App: React.FC = () => {
                     )}
                 </div>
             ))}
-            <Footer />
+            <Footer scrollToSection={scrollToSection}/>
         </div>
     );
 };

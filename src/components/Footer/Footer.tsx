@@ -10,11 +10,37 @@ import search from "../../static/icons/search.svg";
 import React from "react";
 import { isMobile } from 'react-device-detect';
 
+const months = ['Июнь', 'Июль', 'Август'];
 
-const Footer = () => {
+interface HeaderProps {
+    scrollToSection: (index: number) => void;
+}
+
+const Footer = ({ scrollToSection }: HeaderProps) => {
     return <div className={styles.root}>
+        <div className={styles.mobilePanel}>
+            {
+                months.map((el, index) => <button key={index} onClick={() => scrollToSection(index)}>
+                    {el}
+                </button>)
+            }
+        </div>
         <div className={styles.top}>
-            <a href={'https://gctm.ru'}><img src={logo} alt={logo} className={styles.logo}/></a>
+            {
+                isMobile ? <div className={styles.mobileMMM}>
+                    <a href={'https://gctm.ru'}><img src={logo} alt={logo} className={styles.logo}/></a>
+
+                    <div className={styles.telephone}>
+                        <img src={phone} alt="Phone"/>
+                        <div className={styles.col}>
+                            <a href="tel:+74994847777">+7 /499/ 484-77-77</a>
+                            <a href="tel:+79636594088">+7 963 659 40 88</a>
+                        </div>
+                    </div>
+                </div> : <a href={'https://gctm.ru'}><img src={logo} alt={logo} className={styles.logo}/></a>
+            }
+
+
             {
                 isMobile ? <div className={styles.contacts}>
                     <img src={search} alt={search}/>
@@ -52,13 +78,15 @@ const Footer = () => {
                     </a>
                 </div>
             }
-            <div className={styles.telephone}>
-                <img src={phone} alt="Phone"/>
-                <div className={styles.col}>
-                    <a href="tel:+74994847777">+7 /499/ 484-77-77</a>
-                    <a href="tel:+79636594088">+7 963 659 40 88</a>
+            {
+                !isMobile && <div className={styles.telephone}>
+                    <img src={phone} alt="Phone"/>
+                    <div className={styles.col}>
+                        <a href="tel:+74994847777">+7 /499/ 484-77-77</a>
+                        <a href="tel:+79636594088">+7 963 659 40 88</a>
+                    </div>
                 </div>
-            </div>
+            }
         </div>
         <div className={styles.bottom}>
 
