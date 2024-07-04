@@ -1,54 +1,58 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	overflow-x: hidden;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
 @font-face {
-  font-family: 'TT-Norms-Pro-Compact-Regular';
-  src: url('static/fonts/TT-Norms-Pro-Compact-Regular.woff') format('woff'),
-  url('static/fonts/TT-Norms-Pro-Compact-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+	font-family: 'TT-Norms-Pro-Compact-Regular';
+	src: url('static/fonts/TT-Norms-Pro-Compact-Regular.woff') format('woff'),
+		url('static/fonts/TT-Norms-Pro-Compact-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'TT-Nooks-Script-Regular';
-  src: url('static/fonts/TT-Nooks-Script-Regular.woff') format('woff'),
-  url('static/fonts/TT-Nooks-Script-Regular.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
+	font-family: 'TT-Nooks-Script-Regular';
+	src: url('static/fonts/TT-Nooks-Script-Regular.woff') format('woff'),
+		url('static/fonts/TT-Nooks-Script-Regular.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
 }
-
 
 /* You can now use these fonts in your styles */
 
 body {
-  font-family: 'TT-Norms-Pro-Compact-Regular', sans-serif;
+	font-family: 'TT-Norms-Pro-Compact-Regular', sans-serif;
 }
 
 /* Example usage for TT Nooks Script */
-h1, h2, h3 {
-  font-family: 'TT-Nooks-Script-Regular', cursive;
+h1,
+h2,
+h3 {
+	font-family: 'TT-Nooks-Script-Regular', cursive;
 }
 
-
 * {
-  /*overflow-x: hidden;*/
+	/*overflow-x: hidden;*/
 }
 
 h3 {
-  font-size: 9vw;
-  margin: 0;
-  text-transform: uppercase;
-  color: #454545;
-  font-weight: 900;
+	font-size: 9vw;
+	margin: 0;
+	text-transform: uppercase;
+	color: #454545;
+	font-weight: 900;
 }
