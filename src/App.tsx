@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import React, { useRef } from 'react';
 import { isMobile } from 'react-device-detect';
@@ -8,8 +7,8 @@ import Grid from './components/Grid/Grid';
 import Header from './components/Header/Header';
 import Line from './components/Line/Line';
 import Slider from './components/Slider/Slider';
-import { getList } from './services/bitrix';
 import defaultt from './static/images/default.jpg';
+import testEvents from './testEvents'; // Import the test data
 import { IEvent } from './types';
 
 import logo from './static/images/BTM.svg';
@@ -31,10 +30,11 @@ const monthsJSX: Month[] = [
 ];
 
 const App: React.FC = () => {
-	const { data, isLoading, isError } = useQuery({
-		queryKey: ['list'],
-		queryFn: getList,
-	});
+	// Use the test data directly
+	const data = testEvents;
+
+	const isLoading = false;
+	const isError = false;
 
 	const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 	const headingRefs = useRef<(HTMLHeadingElement | null)[]>([]);
@@ -86,8 +86,6 @@ const App: React.FC = () => {
 			</div>
 		);
 	};
-
-	console.log(data);
 
 	return (
 		<div className={styles.root}>
@@ -213,6 +211,8 @@ const App: React.FC = () => {
 						) : null}
 					</div>
 				))}
+
+			<Grid events={data} />
 			<Footer scrollToSection={scrollToSection} />
 		</div>
 	);
