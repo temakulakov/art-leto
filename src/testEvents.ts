@@ -9,7 +9,7 @@ const testEvents: IEvent[] = [
 			'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/5985/2024-08-01/15:00:00',
 		eventLink:
 			'https://www.bakhrushinmuseum.ru/event/master-klass-tvister-ot-ekster-6/',
-		dateTime: dayjs('01.08.24 15:00', 'DD.MM.YY HH:mm'),
+		dateTime: dayjs('01.06.25 15:00', 'DD.MM.YY HH:mm'),
 		duration: 90,
 		rating: 6,
 		imageLink:
@@ -25,7 +25,7 @@ const testEvents: IEvent[] = [
 			'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/5989/2024-08-03/12:00:00',
 		eventLink:
 			'https://www.bakhrushinmuseum.ru/event/semejnyj-master-klass-podvodnyj-mir-v-tehnike-mokryj-list-i-monotipiya-6/',
-		dateTime: dayjs('03.08.24 12:00', 'DD.MM.YY HH:mm'),
+		dateTime: dayjs('03.08.25 12:00', 'DD.MM.YY HH:mm'),
 		duration: 90,
 		rating: 6,
 		imageLink:
@@ -41,7 +41,7 @@ const testEvents: IEvent[] = [
 			'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/5993/2024-08-07/15:00:00',
 		eventLink:
 			'https://www.gctm.ru/event/master-klass-butafory-chto-za-lyudi-3/',
-		dateTime: dayjs('07.08.24 15:00', 'DD.MM.YY HH:mm'),
+		dateTime: dayjs('07.08.25 15:00', 'DD.MM.YY HH:mm'),
 		duration: 60,
 		rating: 3,
 		imageLink:
@@ -57,7 +57,7 @@ const testEvents: IEvent[] = [
 			'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/5997/2024-08-14/15:00:00',
 		eventLink:
 			'https://www.bakhrushinmuseum.ru/event/master-klass-maskoty-bahrushinskogo-3/',
-		dateTime: dayjs('14.08.24 17:00', 'DD.MM.YY HH:mm'),
+		dateTime: dayjs('14.08.25 17:00', 'DD.MM.YY HH:mm'),
 		duration: 60,
 		rating: 3,
 		imageLink:
@@ -73,7 +73,7 @@ const testEvents: IEvent[] = [
 			'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/6001/2024-08-17/12:00:00',
 		eventLink:
 			'https://www.bakhrushinmuseum.ru/event/semejnyj-master-klass-maski-teatra-kabuki-6/',
-		dateTime: dayjs('17.08.24 12:00', 'DD.MM.YY HH:mm'),
+		dateTime: dayjs('17.08.25 12:00', 'DD.MM.YY HH:mm'),
 		duration: 90,
 		rating: 6,
 		imageLink:
@@ -89,7 +89,7 @@ const testEvents: IEvent[] = [
 			'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/6005/2024-08-21/15:00:00',
 		eventLink:
 			'https://www.bakhrushinmuseum.ru/event/master-klass-korovin-i-memo-6/',
-		dateTime: dayjs('21.08.24 15:00', 'DD.MM.YY HH:mm'),
+		dateTime: dayjs('21.08.25 15:00', 'DD.MM.YY HH:mm'),
 		duration: 90,
 		rating: 6,
 		imageLink:
@@ -105,7 +105,7 @@ const testEvents: IEvent[] = [
 			'https://www.bakhrushinmuseum.ru/buy-tickets/#/buy/event/5961/2024-08-24/12:00:00',
 		eventLink:
 			'https://www.bakhrushinmuseum.ru/event/teatralnaya-vecherinka-6-2/',
-		dateTime: dayjs('24.08.24 12:00', 'DD.MM.YY HH:mm'),
+		dateTime: dayjs('24.08.25 12:00', 'DD.MM.YY HH:mm'),
 		duration: 120,
 		rating: 6,
 		imageLink:

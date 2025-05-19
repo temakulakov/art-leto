@@ -23,7 +23,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection }) => {
 
 	return (
 		<div className={styles.root}>
-			<a href={'https://gctm.ru'}>
+			<a href={'https://bakhrushinmuseum.ru'}>
 				<img className={styles.logo} src={logo} alt='Logo' />
 			</a>
 			<ul className={styles.menu}>

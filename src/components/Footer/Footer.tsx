@@ -30,7 +30,7 @@ const Footer = ({ scrollToSection }: HeaderProps) => {
         <div className={styles.top}>
             {
                 isMobile ? <div className={styles.mobileMMM}>
-                    <a href={'https://gctm.ru'}><img src={logo} alt={logo} className={styles.logo}/></a>
+                    <a href={'https://bakhrushinmuseum.ru'}><img src={logo} alt={logo} className={styles.logo}/></a>
 
                     <div className={styles.telephone}>
                         <img src={phone} alt="Phone"/>
@@ -39,7 +39,7 @@ const Footer = ({ scrollToSection }: HeaderProps) => {
                             <a href="tel:+79636594088">+7 963 659 40 88</a>
                         </div>
                     </div>
-                </div> : <a href={'https://gctm.ru'}><img src={logo} alt={logo} className={styles.logo}/></a>
+                </div> : <a href={'https://bakhrushinmuseum.ru'}><img src={logo} alt={logo} className={styles.logo}/></a>
             }
 
 

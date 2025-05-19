@@ -93,7 +93,7 @@ const App: React.FC = () => {
 				<div className={styles.mobile}>
 					<div className={styles.mobileRoot}>
 						<div className={styles.mobileTop}>
-							<a href={'https://gctm.ru'}>
+							<a href={'https://bakhrushinmuseum.ru'}>
 								<img src={logo} alt='Логотип' />
 							</a>
 							<p className={styles.text}>
@@ -105,7 +105,7 @@ const App: React.FC = () => {
 								— программа <br /> мастер-классов для детей
 							</p>
 						</div>
-						<a href={'https://gctm.ru'}>
+						<a href={'https://bakhrushinmuseum.ru'}>
 							<img src={logo2} alt='Логотип 2' />
 						</a>
 					</div>
