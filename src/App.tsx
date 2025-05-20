@@ -1,4 +1,6 @@
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 import React, { useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 import styles from './App.module.scss';
@@ -14,7 +16,10 @@ import { IEvent } from './types';
 import logo from './static/images/BTM.svg';
 import logo2 from './static/logo/logo.png';
 
-const months = ['Июнь', 'Июль', 'Август'];
+// Устанавливаем плагины для работы с часовыми поясами
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault('Europe/Moscow');
 
 interface Month {
 	id: number;
@@ -24,9 +29,9 @@ interface Month {
 }
 
 const monthsJSX: Month[] = [
-	{ id: 0, title: 'Июнь', color: '#F8B501', count: 6 },
-	{ id: 1, title: 'Июль', color: '#A31A30', count: 7 },
-	{ id: 2, title: 'Август', color: '#038388', count: 8 },
+	{ id: 0, title: 'Июнь', color: '#F8B501', count: 5 }, // 5 = май (индексация с 0)
+	{ id: 1, title: 'Июль', color: '#A31A30', count: 6 }, // 6 = июнь
+	{ id: 2, title: 'Август', color: '#038388', count: 7 }, // 7 = июль
 ];
 
 const App: React.FC = () => {
@@ -47,44 +52,13 @@ const App: React.FC = () => {
 		}
 	};
 
-	const getSortedEvents = (events: IEvent[], month: number) => {
-		return events
-			.filter(event => dayjs(event.dateTime).month() === month)
-			.sort((a, b) => (dayjs(a.dateTime).isBefore(b.dateTime) ? -1 : 1));
-	};
-
-	const getFutureEvents = (events: IEvent[]) => {
-		const today = dayjs();
-		return events.filter(event => dayjs(event.dateTime).isAfter(today));
-	};
-
-	const renderMonthSection = (
-		month: Month,
-		events: IEvent[],
-		index: number
-	) => {
-		const futureEvents = getFutureEvents(events);
-		if (futureEvents.length === 0) return null;
-
-		return (
-			<div
-				key={month.id}
-				ref={el => (sectionRefs.current[index] = el)}
-				style={{ height: 'fit-content', minHeight: '100px' }}
-			>
-				{!isMobile ? (
-					<Line color={month.color} word={month.title} />
-				) : (
-					<h3
-						style={{ marginLeft: '1.5vw' }}
-						ref={el => (headingRefs.current[index] = el)}
-					>
-						{month.title}
-					</h3>
-				)}
-				<Grid events={futureEvents} />
-			</div>
-		);
+	const getEventsForMonth = (events: IEvent[], monthIndex: number) => {
+		const today = dayjs().tz('Europe/Moscow');
+		// const today = dayjs('2025-06-01 15:00', 'YYYY-MM-DD HH:mm')
+		return events.filter(event => {
+			const eventDate = dayjs(event.dateTime).tz('Europe/Moscow');
+			return eventDate.month() === monthIndex && eventDate.isAfter(today);
+		});
 	};
 
 	return (
@@ -110,9 +84,9 @@ const App: React.FC = () => {
 						</a>
 					</div>
 					<div className={styles.mobilePanel}>
-						{months.map((el, index) => (
+						{monthsJSX.map((month, index) => (
 							<button key={index} onClick={() => scrollToSection(index)}>
-								{el}
+								{month.title}
 							</button>
 						))}
 					</div>
@@ -143,7 +117,7 @@ const App: React.FC = () => {
 								description:
 									'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!',
 								imageLink: defaultt,
-								dateTime: dayjs(),
+								dateTime: dayjs().tz('Europe/Moscow'),
 							},
 							{
 								id: 1,
@@ -156,7 +130,7 @@ const App: React.FC = () => {
 								description:
 									'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!',
 								imageLink: defaultt,
-								dateTime: dayjs(),
+								dateTime: dayjs().tz('Europe/Moscow'),
 							},
 							{
 								id: 2,
@@ -169,7 +143,7 @@ const App: React.FC = () => {
 								description:
 									'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!',
 								imageLink: defaultt,
-								dateTime: dayjs(),
+								dateTime: dayjs().tz('Europe/Moscow'),
 							},
 							{
 								id: 3,
@@ -182,7 +156,7 @@ const App: React.FC = () => {
 								description:
 									'Ребята познакомятся с эскизами декораций таких знаменитых театральных художников, как Н.Гончарова и И.Билибин. После изучения эскизов декораций к известнейшим спектаклям детям предложат придумать и изобразить свои собственные сценические декорации на воздушной пене яркими красками. Затем все участники перенесут узоры на бумагу и заберут на память яркие рисунки... которым, возможно, предстоит прославиться!',
 								imageLink: defaultt,
-								dateTime: dayjs(),
+								dateTime: dayjs().tz('Europe/Moscow'),
 							},
 						]}
 					/>
@@ -190,29 +164,27 @@ const App: React.FC = () => {
 			)}
 			{!isLoading &&
 				!isError &&
-				monthsJSX.map((month, index) => (
-					<div key={month.id} ref={el => (sectionRefs.current[index] = el)}>
-						{!isMobile ? (
-							<Line color={month.color} word={month.title} />
-						) : (
-							<h3
-								style={{ marginLeft: '1.5vw' }}
-								ref={el => (headingRefs.current[index] = el)}
-							>
-								{month.title}
-							</h3>
-						)}
-						{data &&
-						getFutureEvents(getSortedEvents(data, month.count - 1)).length >
-							0 ? (
-							<Grid
-								events={getFutureEvents(getSortedEvents(data, month.count - 1))}
-							/>
-						) : null}
-					</div>
-				))}
+				monthsJSX.map((month, index) => {
+					const monthEvents = getEventsForMonth(data, month.count);
+					if (monthEvents.length === 0) return null;
 
-			<Grid events={data} />
+					return (
+						<div key={month.id} ref={el => (sectionRefs.current[index] = el)}>
+							{!isMobile ? (
+								<Line color={month.color} word={month.title} />
+							) : (
+								<h3
+									style={{ marginLeft: '1.5vw' }}
+									ref={el => (headingRefs.current[index] = el)}
+								>
+									{month.title}
+								</h3>
+							)}
+							<Grid events={monthEvents} />
+						</div>
+					);
+				})}
+
 			<Footer scrollToSection={scrollToSection} />
 		</div>
 	);

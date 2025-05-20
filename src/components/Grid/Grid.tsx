@@ -2,6 +2,8 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import updateLocale from 'dayjs/plugin/updateLocale';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 import { isMobile } from 'react-device-detect';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { IEvent } from '../../types';
@@ -10,6 +12,11 @@ import styles from './Grid.module.scss';
 // Устанавливаем плагины
 dayjs.extend(advancedFormat);
 dayjs.extend(updateLocale);
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+// Устанавливаем часовой пояс по умолчанию
+dayjs.tz.setDefault('Europe/Moscow');
 
 // Настраиваем локализацию для отображения месяцев в родительном падеже
 dayjs.updateLocale('ru', {
@@ -52,10 +59,10 @@ const Grid = ({ events }: GridProps) => {
 							{isMobile ? (
 								<>
 									<div className={styles.dateTime}>
-										{dayjs(event.dateTime).locale('ru').format('DD MMMM')}
+										{dayjs(event.dateTime).tz('Europe/Moscow').locale('ru').format('DD MMMM')}
 									</div>
 									<div className={styles.dateTime}>
-										{dayjs(event.dateTime).locale('ru').format('HH:mm')}
+										{dayjs(event.dateTime).tz('Europe/Moscow').locale('ru').format('HH:mm')}
 									</div>
 									<div className={styles.dateTime}>{event.duration} мин.</div>
 								</>
@@ -63,9 +70,9 @@ const Grid = ({ events }: GridProps) => {
 								<>
 									<div className={styles.dateTime}>
 										<span>
-											{dayjs(event.dateTime).locale('ru').format('DD MMMM')}
+											{dayjs(event.dateTime).tz('Europe/Moscow').locale('ru').format('DD MMMM')}
 										</span>
-										<p>{dayjs(event.dateTime).locale('ru').format('HH:mm')}</p>
+										<p>{dayjs(event.dateTime).tz('Europe/Moscow').locale('ru').format('HH:mm')}</p>
 									</div>
 									<div className={styles.dateTime}>
 										<p>{event.duration} мин.</p>
